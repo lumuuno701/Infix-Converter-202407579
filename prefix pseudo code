@@ -1,0 +1,26 @@
+BEGIN
+
+INPUT infix expression
+
+REVERSE the infix expression
+
+FOR each character ch in expression DO
+    IF ch is '(' THEN
+        Replace it with ')'
+    ELSE IF ch is ')' THEN
+        Replace it with '('
+END FOR
+
+CALL infixToPostfix on modified expression
+STORE result in postfix
+
+REVERSE postfix
+STORE result as prefix
+
+DISPLAY prefix
+
+END
+
+
+
+Infix to prefix
