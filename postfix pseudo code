@@ -1,0 +1,35 @@
+BEGIN
+
+CREATE empty stack S
+CREATE empty string postfix
+
+FOR each character ch in infix expression DO
+
+    IF ch is an operand THEN
+        Add ch to postfix
+
+    ELSE IF ch is '(' THEN
+        Push ch onto stack S
+
+    ELSE IF ch is ')' THEN
+        WHILE top of stack S is not '(' DO
+            Pop from S and add to postfix
+        END WHILE
+        Pop '(' from stack S
+
+    ELSE IF ch is an operator (+, -, *, /, ^) THEN
+        WHILE stack S is not empty AND
+              precedence(top of S) >= precedence(ch) DO
+            Pop from S and add to postfix
+        END WHILE
+        Push ch onto stack S
+
+END FOR
+
+WHILE stack S is not empty DO
+    Pop from S and add to postfix
+END WHILE
+
+DISPLAY postfix
+
+END
